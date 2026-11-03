@@ -1011,6 +1011,16 @@ A provider that says nothing at all, not even a keepalive, is handed on a
 
 ## Which providers search for another model
 
+An AI Studio key with Google's native Gemini endpoint (`geminiKeySearches`)
+is offered in Settings and picked automatically at the same rank as a
+Google sign-in. Its search uses `googleSearch` and the key's API quota.
+Only searchable Gemini models are offered; clearing the native endpoint,
+using another host or Vertex AI does not grant this eligibility. Its own
+models retain their own-provider search preference (`ownSearcher`).
+Covered by `TestGeminiKeySearcherIsListedAndSelectable`,
+`TestGeminiKeySearcherScope` and
+`TestGeminiKeySearcherSearchesForAnotherProvider`.
+
 `Searchers()` (Settings › Web search's picker) and `autoSearcher` (magpie's
 own pick) take a provider by `searchRank`, and its models by
 `searchableModel`, from the same rules that send a provider's own search
